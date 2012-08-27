@@ -76,7 +76,7 @@ class Composition
      *
      * @return string
      */
-    public function getPlatform()
+    public static function getPlatform()
     {
         if (defined('PHP_WINDOWS_VERSION_MAJOR')) {
             return self::OS_WINDOWS;

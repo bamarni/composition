@@ -7,5 +7,3 @@ if (!$loader = @include __DIR__ . '/../vendor/autoload.php') {
 }
 
 $loader->add('Composition\Tests', __DIR__);
-
-die(\Composition::getPlatform());
