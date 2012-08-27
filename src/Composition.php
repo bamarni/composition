@@ -10,6 +10,9 @@ use Composer\Repository\PlatformRepository;
 
 class Composition
 {
+    const OS_WINDOWS = 'windows';
+    const OS_UNIX = 'unix';
+
     private static $pool;
     private static $rootDir;
 
@@ -68,9 +71,18 @@ class Composition
         return empty($packages) ? false : true;
     }
 
+    /**
+     * Get the platform type.
+     *
+     * @return string
+     */
     public function getPlatform()
     {
-        return PHP_OS;
+        if (defined('PHP_WINDOWS_VERSION_MAJOR')) {
+            return self::OS_WINDOWS;
+        }
+
+        return self::OS_UNIX;
     }
 
     /**

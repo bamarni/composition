@@ -11,17 +11,17 @@ package managment tool) and php/php-extensions.
 
 ## Some examples
 
+You want to check your PHP environment :
+``` php
+\Composition::has('php', '5.4.*');
+\Composition::has('ext-mongo');
+\Composition::has('ext-memcache');
+```
+
 You usually need to skip some tests if a package isn't present or if it doesn't
 match a given version :
 ``` php
-if (!Composition::has('vendor/super-package', '>=2.0') {
+if (!\Composition::has('vendor/super-package', '>=2.0') {
     $this->markTestSkipped('The following tests require "SuperPackage" to be at least at 2.0');
 }
-```
-
-You want to check your PHP environment :
-``` php
-Composition::has('php', '5.4.*');
-Composition::has('ext-mongo');
-Composition::has('ext-memcache');
 ```
