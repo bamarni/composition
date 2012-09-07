@@ -13,6 +13,7 @@ class Composition
     const OS_WINDOWS = 'windows';
     const OS_UNIX = 'unix';
 
+    private static $platform;
     private static $pool;
     private static $rootDir;
 
@@ -72,17 +73,31 @@ class Composition
     }
 
     /**
-     * Get the platform type.
+     * Wether or not the script is running on a Windows platform.
      *
-     * @return string
+     * @return boolean
      */
-    public static function getPlatform()
+    public static function isWindows()
     {
-        if (defined('PHP_WINDOWS_VERSION_MAJOR')) {
-            return self::OS_WINDOWS;
+        if (null === self::$platform) {
+            self::$platform = self::getPlatform();
         }
 
-        return self::OS_UNIX;
+        return self::OS_WINDOWS === self::$platform;
+    }
+
+    /**
+     * Wether or not the script is running on a Unix platform.
+     *
+     * @return boolean
+     */
+    public static function isUnix()
+    {
+        if (null === self::$platform) {
+            self::$platform = self::getPlatform();
+        }
+
+        return self::OS_UNIX === self::$platform;
     }
 
     /**
@@ -93,5 +108,14 @@ class Composition
     public static function setRootDir($rootDir)
     {
         self::$rootDir = $rootDir;
+    }
+
+    private static function getPlatform()
+    {
+        if (defined('PHP_WINDOWS_VERSION_MAJOR') || 0 === stripos(PHP_OS, 'win')) {
+            return self::OS_WINDOWS;
+        }
+
+        return self::OS_UNIX;
     }
 }

@@ -6,22 +6,25 @@ Composition provides a lightweight and generic API, that you can use to check yo
 environment at runtime, instead of manually go checking for regex in constants,
 classes/functions existence, matching a version against a class constant, ...
 
-This is a wip, currently it can only check for packages (when using composer as
-package managment tool) and php/php-extensions.
+It only works when using Composer as package management tool.
 
 ## Some examples
 
-You want to check your PHP environment :
+A single command to check your PHP environment :
 ``` php
+if (!\Composition::has('vendor/super-package', '>=2.0') {
+    $this->markTestSkipped('The following tests require "SuperPackage" to be at least at 2.0');
+}
+
 \Composition::has('php', '5.4.*');
 \Composition::has('ext-mongo');
 \Composition::has('ext-memcache');
 ```
 
-You usually need to skip some tests if a package isn't present or if it doesn't
-match a given version :
+Check the platform :
 ``` php
-if (!\Composition::has('vendor/super-package', '>=2.0') {
-    $this->markTestSkipped('The following tests require "SuperPackage" to be at least at 2.0');
+if (\Composition::isWindows()) {
+// ...
 }
 ```
+
