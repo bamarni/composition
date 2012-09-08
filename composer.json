@@ -8,9 +8,7 @@
         "doctrine/common": "2.3.*"
     },
     "autoload": {
-        "psr-0": {
-            "Composition": "src/"
-        }
+        "classmap": ["src/Composition.php"]
     },
     "minimum-stability": "dev"
 }
