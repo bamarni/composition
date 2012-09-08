@@ -79,11 +79,7 @@ class Composition
      */
     public static function isWindows()
     {
-        if (null === self::$platform) {
-            self::$platform = self::getPlatform();
-        }
-
-        return self::OS_WINDOWS === self::$platform;
+        return self::OS_WINDOWS === self::getPlatform();
     }
 
     /**
@@ -93,11 +89,7 @@ class Composition
      */
     public static function isUnix()
     {
-        if (null === self::$platform) {
-            self::$platform = self::getPlatform();
-        }
-
-        return self::OS_UNIX === self::$platform;
+        return self::OS_UNIX === self::getPlatform();
     }
 
     /**
@@ -112,10 +104,11 @@ class Composition
 
     private static function getPlatform()
     {
+        self::$platform = self::OS_UNIX;
         if (defined('PHP_WINDOWS_VERSION_MAJOR') || 0 === stripos(PHP_OS, 'win')) {
-            return self::OS_WINDOWS;
+            self::$platform = self::OS_WINDOWS;
         }
 
-        return self::OS_UNIX;
+        return self::$platform;
     }
 }
