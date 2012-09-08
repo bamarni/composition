@@ -13,7 +13,6 @@ class Composition
     const OS_WINDOWS = 'windows';
     const OS_UNIX = 'unix';
 
-    private static $platform;
     private static $pool;
     private static $rootDir;
 
@@ -104,11 +103,10 @@ class Composition
 
     private static function getPlatform()
     {
-        self::$platform = self::OS_UNIX;
-        if (defined('PHP_WINDOWS_VERSION_MAJOR') || 0 === stripos(PHP_OS, 'win')) {
-            self::$platform = self::OS_WINDOWS;
+        if (defined('PHP_WINDOWS_VERSION_MAJOR')) {
+            return self::OS_WINDOWS;
         }
 
-        return self::$platform;
+        return self::OS_UNIX;
     }
 }
