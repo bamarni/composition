@@ -18,7 +18,6 @@ if (!\Composition::has('vendor/super-package', '>=2.0') {
 
 \Composition::has('php', '5.4.*');
 \Composition::has('ext-mongo');
-\Composition::has('ext-memcache');
 ```
 
 Check the platform :
@@ -28,3 +27,6 @@ if (\Composition::isWindows()) {
 }
 ```
 
+## Note
+
+This tool should mostly be used in your unit tests, and not be abused in production.
