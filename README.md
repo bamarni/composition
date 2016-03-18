@@ -1,6 +1,4 @@
-# Composition
-
-[![Build Status](https://secure.travis-ci.org/composition/composition.png)](https://secure.travis-ci.org/composition/composition)
+# Composition [![Build Status](https://secure.travis-ci.org/composition/composition.png)](https://secure.travis-ci.org/composition/composition)
 
 Composition provides a lightweight and generic API, that you can use to check your
 environment at runtime, instead of manually go checking for regex in constants,

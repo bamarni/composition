@@ -2,13 +2,12 @@
     "name": "bamarni/composition",
     "require": {
         "php": ">5.3.0",
-        "composer/composer": "*"
+        "composer/composer": "1.*@beta"
     },
     "require-dev": {
         "doctrine/common": "2.3.*"
     },
     "autoload": {
         "classmap": ["src/Composition.php"]
-    },
-    "minimum-stability": "dev"
+    }
 }
